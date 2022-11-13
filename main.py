@@ -18,9 +18,10 @@ while len(record_answer) < 50:
         missing_states = []
         for state in all_states:
             if state not in all_states:
-                missing_states = [state]
+                missing_states.append(state)
         states_to_learn = pandas.DataFrame(missing_states)
         states_to_learn.to_csv('states_to_learn.csv')
+        break
 
     if answer in all_states:
         record_answer.append(answer)

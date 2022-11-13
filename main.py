@@ -12,13 +12,10 @@ all_states = data.state.to_list()
 record_answer = []
 
 while len(record_answer) < 50:
-    answer = screen.textinput(f'{len(record_answer)} / 50 States Correct', "What is another state's name ?")
+    answer = screen.textinput(f'{len(record_answer)} / 50 States Correct', "What is another state's name ?").title()
 
     if answer == 'Exit':
-        missing_states = []
-        for state in all_states:
-            if state not in all_states:
-                missing_states.append(state)
+        missing_states = [new_state for new_state in all_states if new_state not in record_answer]
         states_to_learn = pandas.DataFrame(missing_states)
         states_to_learn.to_csv('states_to_learn.csv')
         break
